@@ -392,7 +392,7 @@ class WC_Shipstation_API_Export extends WC_Shipstation_API_Request {
 
 					$this->xml_append( $item_xml, 'UnitPrice', $item_total, false );
 				}
-
+// storepro commented this code for ticket 64576
 				// handle product specific data.
 				// if ( $product && $product->needs_shipping() ) {
 				// 	$this->xml_append( $item_xml, 'SKU', $product->get_sku() );
@@ -443,6 +443,9 @@ class WC_Shipstation_API_Export extends WC_Shipstation_API_Request {
 				// 		'qty'    => $item_qty,
 				// 	);
 				// }
+
+
+				// storepro add this code for ticket 64576
 if ( $product && $product->needs_shipping() ) {
 	$this->xml_append( $item_xml, 'SKU', $product->get_sku() );
 	$this->xml_append( $item_xml, 'Name', $item->get_name() );
@@ -497,6 +500,7 @@ if ( $product && $product->needs_shipping() ) {
 		'qty'    => $item_qty,
 	);
 }
+				// storepro commented this code for ticket 64576
 				// if ( $item->get_meta_data() ) {
 				// 	add_filter( 'woocommerce_is_attribute_in_product_name', '__return_false' );
 				// 	$formatted_meta = $item->get_formatted_meta_data();
@@ -514,7 +518,7 @@ if ( $product && $product->needs_shipping() ) {
 				// 		$item_xml->appendChild( $options_xml );
 				// 	}
 				// }
-
+// storepro added this code for ticket 64576
 				if ( $item->get_meta_data() ) {
 	add_filter( 'woocommerce_is_attribute_in_product_name', '__return_false' );
 	$formatted_meta = $item->get_formatted_meta_data();
